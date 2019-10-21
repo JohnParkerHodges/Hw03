@@ -9,15 +9,7 @@ const slider = document.getElementById("slider")
 
 function generate() {
     buttonClicks++;
-
-    if (vald()) {
-        makepw();
-    }
-
-
-
-
-
+    if (vald()) makepw();
 }
 
 function makepw() {
