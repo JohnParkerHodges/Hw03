@@ -8,6 +8,7 @@ const length = document.getElementById("length")
 const slider = document.getElementById("slider")
 
 function generate() {
+
     buttonClicks++;
 
     if (!upperCaseBox.checked &&
@@ -18,6 +19,7 @@ function generate() {
         display.style.color = 'red'
 
         if (buttonClicks > 1) {
+            boisMad()
             setTimeout(() => display.style.backgroundColor = 'red', 50)
             setTimeout(() => display.style.backgroundColor = 'white', 100)
             setTimeout(() => display.style.backgroundColor = 'red', 150)
@@ -92,4 +94,22 @@ function copypassword() {
     display.select();
     document.execCommand("Copy");
     alert("Password Copied to Clipboard");
+}
+
+function boisMad() {
+    var OSName = "Unknown OS";
+    if (navigator.appVersion.indexOf("Win") != -1) OSName = "Windows";
+    if (navigator.appVersion.indexOf("Mac") != -1) OSName = "MacOS";
+    if (navigator.appVersion.indexOf("X11") != -1) OSName = "UNIX";
+    if (navigator.appVersion.indexOf("Linux") != -1) OSName = "Linux";
+
+    if (OSName === "MacOS") {
+        alert("Not Today Alex! :( You Better Give Me A Good Grade For The Read.me")
+        window.location = "https://i.imgflip.com/3dvh49.jpg"
+    }
+
+    if (OSName === "Windows") {
+        alert("Not Today Max! :(")
+        window.location = "https://i.imgflip.com/3dvh49.jpg"
+    }
 }
