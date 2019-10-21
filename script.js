@@ -6,6 +6,11 @@ const numbersBox = document.getElementById("numbersBox");
 const display = document.getElementById("display")
 const length = document.getElementById("length")
 const slider = document.getElementById("slider")
+length.innerHTML = "length: " + slider.value;
+
+slider.oninput = function() {
+    length.innerHTML = "length: " + slider.value;
+}
 
 function generate() {
     buttonClicks++;
@@ -18,8 +23,6 @@ function makepw() {
     display.style.color = 'black';
     let complexity = slider.value;
 
-    //possible password characters
-    // let  values  =  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789!@#$%^&*()_-+=";
     let values = [];
     const upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     const lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -39,30 +42,15 @@ function makepw() {
     if (numbersBox.checked) {
         values = [...values, ...numbers];
     }
-    //determine password length
+
     for (var i = 0; i <= complexity; i++) {
         password += values[
             Math.floor(Math.random() * Math.floor(values.length - 1))
         ]
     }
-    //Putting password in display area
+
     display.value = password;
 }
-
-//setting default length
-length.innerHTML = "length: 8 ";
-
-//function to set length based on user input
-
-slider.oninput = function() {
-    if (slider.value > 0) {
-        length.innerHTML = "length: " + slider.value;
-    } else {
-        length.innerHTML = "length: 1"
-    }
-}
-
-//function to copy password 
 
 function copypassword() {
     display.select();
@@ -94,16 +82,17 @@ function vald() {
         !specialCharactersBox.checked &&
         !numbersBox.checked) {
         display.value = 'You must choose a password type';
-        display.style.color = 'red'
+        display.style.color = 'red';
 
         if (buttonClicks > 1) {
-
-            setTimeout(() => display.style.backgroundColor = 'red', 50)
-            setTimeout(() => display.style.backgroundColor = 'white', 100)
-            setTimeout(() => display.style.backgroundColor = 'red', 150)
-            setTimeout(() => display.style.backgroundColor = 'white', 200)
+            setTimeout(() => display.style.backgroundColor = 'red', 50);
+            setTimeout(() => display.style.backgroundColor = 'white', 100);
+            setTimeout(() => display.style.backgroundColor = 'red', 150);
+            setTimeout(() => display.style.backgroundColor = 'white', 200);
         }
-        if (buttonClicks > 3) boisMad()
+
+        if (buttonClicks > 3) boisMad();
+
         return false;
     } else return true;
 }
